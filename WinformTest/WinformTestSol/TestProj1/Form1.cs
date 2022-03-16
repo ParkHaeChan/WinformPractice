@@ -12,6 +12,7 @@ namespace TestProj1
 {
     public partial class Form1 : Form
     {
+        const int REPEAT_INTERVAL = 5000;
         public Form1()
         {
             InitializeComponent();
@@ -37,16 +38,40 @@ namespace TestProj1
         {
             BackgroundWorker worker = sender as BackgroundWorker;
 
-            for (int i = 0; i <= 100; ++i)
+            // infinite work until get cancel event
+            while(true)
             {
-                if (bgw.CancellationPending)
+                // Actual Work
+                for (int i = 0; i <= 100; ++i)
                 {
-                    e.Cancel = true;    // Will get e.Cancelled == true at line: 65
+                    if (bgw.CancellationPending)
+                    {
+                        e.Cancel = true;    // Will get e.Cancelled == true at line: 65
+                        return;
+                    }
+                    else
+                    {
+                        System.Threading.Thread.Sleep(50);
+                        worker.ReportProgress(i);
+                    }
                 }
-                else
+
+                // Repeat Timer(Cool down)
+                int time = 0;
+                while(time < REPEAT_INTERVAL)
                 {
-                    System.Threading.Thread.Sleep(50);
-                    worker.ReportProgress(i);
+                    if(bgw.CancellationPending)
+                    {
+                        e.Cancel = true;
+                        return;
+                    }
+                    else
+                    {
+                        // 그냥 Sleep(5000)으로 쓰면 그 사이 발생한 Cancel 이벤트를 탐지할 수 없어
+                        // 그만큼 Cancel이 느려져 UX가 저하되는 문제가 생김
+                        System.Threading.Thread.Sleep(500); // Sleep 0.5 seconds
+                        time += 500;
+                    }
                 }
             }
         }
@@ -65,7 +90,7 @@ namespace TestProj1
             else if (e.Cancelled)
             {
                 // CancelAsync was called.
-                resultLabel.Text = "Canceled";
+                resultLabel.Text = "Cancelled";
             }
             else
             {
@@ -76,13 +101,15 @@ namespace TestProj1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(!bgw.IsBusy)
+            resultLabel.Text = "Start!";
+            if (!bgw.IsBusy)
                 bgw.RunWorkerAsync();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if(bgw.WorkerSupportsCancellation)
+            resultLabel.Text = "wait for Cancel...";
+            if (bgw.WorkerSupportsCancellation)
                 bgw.CancelAsync();
         }
     }
