@@ -1,0 +1,10 @@
+C:\Users\Admin\Documents\GitHub\WinformPractice\WinformTest\WinformTestSol\TestProj2\bin\Debug\TestProj2.exe.config
+C:\Users\Admin\Documents\GitHub\WinformPractice\WinformTest\WinformTestSol\TestProj2\bin\Debug\TestProj2.exe
+C:\Users\Admin\Documents\GitHub\WinformPractice\WinformTest\WinformTestSol\TestProj2\bin\Debug\TestProj2.pdb
+C:\Users\Admin\Documents\GitHub\WinformPractice\WinformTest\WinformTestSol\TestProj2\obj\Debug\TestProj2.csproj.AssemblyReference.cache
+C:\Users\Admin\Documents\GitHub\WinformPractice\WinformTest\WinformTestSol\TestProj2\obj\Debug\TestProj2.Form1.resources
+C:\Users\Admin\Documents\GitHub\WinformPractice\WinformTest\WinformTestSol\TestProj2\obj\Debug\TestProj2.Properties.Resources.resources
+C:\Users\Admin\Documents\GitHub\WinformPractice\WinformTest\WinformTestSol\TestProj2\obj\Debug\TestProj2.csproj.GenerateResource.cache
+C:\Users\Admin\Documents\GitHub\WinformPractice\WinformTest\WinformTestSol\TestProj2\obj\Debug\TestProj2.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Documents\GitHub\WinformPractice\WinformTest\WinformTestSol\TestProj2\obj\Debug\TestProj2.exe
+C:\Users\Admin\Documents\GitHub\WinformPractice\WinformTest\WinformTestSol\TestProj2\obj\Debug\TestProj2.pdb
