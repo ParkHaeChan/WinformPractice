@@ -29,13 +29,13 @@ namespace TestProj2
                 return;
             }
             label1.Text = "input url: " + url;
-            if (!backgroundWorker1.IsBusy)
+            if (!backgroundWorker1.IsBusy)  // 안막으면 버튼 연타하면 예외발생함
                 backgroundWorker1.RunWorkerAsync(url);
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            string url = e.Argument as string;  // e.Argument.ToString()은 class 명을 print하는게 기본동작임을 주의
+            string url = e.Argument as string;  // e.Argument.ToString()으로 써도 된다.
 
             try
             {
